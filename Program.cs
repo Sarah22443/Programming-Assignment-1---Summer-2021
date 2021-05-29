@@ -92,19 +92,20 @@ namespace Assignment1_Summer2021
         {
             try
             {
-                //first set varibales x, y at starting positions (0,0) this is the initial coordinates 
+                //First I set varibales x, y at starting positions (0,0) this is the initial coordinates.
                 int x = 0;
                 int y = 0;
 
-                //loop through the moves. I set 'i' as integer value and assigned it to start at value of 0
+                //Loop through the moves. I set 'i' as integer value and assigned it to start at value of 0.
                  for (int i = 0; i < moves.Length; i++) {
 
-                    /*Used if statement to increment the count on whatever move we are on and assigned 
-                     * all move options available 'R' is right so will add 1 to x,'L' is left so will subtract 1 from x,
-                     * 'U' is up so will add 1 to y, and 'D' is down so will subtract 1 from y, 
-                     * this helps indicate which way robot moved. 
-                     * Also note, we have to account for both incrementing and decrementing 
-                     * since the robot can go both up (indicated by +) or down (indicated by -). */
+                    /*Used if statement to increment the count on whatever move we are on and assigned all move options 
+                     that are available 'R' is right so will add 1 to x (x+1), 'L' is left so will subtract 1 from x (x-1),
+                     'U' is up so will add 1 to y (y+1), and 'D' is down so will subtract 1 from y (y-1). 
+                      
+                    This part helps the computer indicate which direction the robot moved.  Also note, we have to account for both 
+                    incrementing and decrementing since the robot can go both up (indicated by +) or down (indicated by -). */
+
                     if (moves[i] == 'R')
                         {
                             x = x +1;
@@ -122,9 +123,9 @@ namespace Assignment1_Summer2021
                             y = y -1;
                         }
                     }
-                /*if at end of moves both x and y ARE EQUAL to 0 values, than the robot has returned
-                 * to its origin, so return value is true. 
-                 * However, if both x and y are NOT EQUAL to 0 values than return false.*/
+
+                /*If at end of moves both x and y ARE EQUAL to 0 values, than the robot has returned to its origin, so return value is true. 
+                 However, if both x and y are NOT EQUAL to 0 at the end of the loop than than return false.*/
                 
                 if (x == 0 && y == 0) return true;
                 return false; 
@@ -154,18 +155,21 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
         {
             try
             {
-                /*First created a character array (char = 1 character). 
-                 * since a pangram includes all of the english alphabets from a-z included all characters of english alphabet in the array*/
+                /*First created a character array (char is equal to 1 character). 
+                  Since a pangram includes all of the english alphabets from a-z included all characters of english alphabet within the array*/
+
                 char[] arr = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
                     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
-                /*assignd string data type to 'sent' variable. The sent variable is now the input string
-                * since I assigned 's' (as per earlier the string 's' is the input variable). 
-                * converted string to lower case, since problem requires lower case letters for input.*/
+                /*Assignd string data type to 'sent' variable. The sent variable is now the input string
+                  Please note that I assigned 's' (as per earlier the string 's' is the input variable). 
+                  Converted string to lower case, since problem requires lower case letters to pass through for the input.*/
+
                 string sent = s.ToLower();
 
-                /*for loop to check if the pangram contains all the characters in the above array (arr)
-                 * then will continue the loop. The loop iterates through the array*/ 
+                /*For loop to check if the pangram contains all the characters in the above array (arr)
+                  The loop will iterate through the array to search input includes all characters in the array*/
+
                 for (int i = 0; i < arr.Length; i++)
                 {
                     if (sent.Contains(arr[i]))
@@ -173,6 +177,7 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
                     else
                         return false;
                 }
+            }
 
             catch (Exception)
             {
@@ -202,13 +207,14 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
         {
             try
             {
-                // write your code here
+                
                 /* A formula that would work shown below (wrote it down in steps below);
                  * step 1: add sum of array of integers store in variable 'nums'
                  * step 2: obtain the total in 'nums' and subtract the left most integer (starting at index o and then incrementing by +1 in the array) to get total for the left of the index 
                  * step 3: obtain the value integer in that left most integer (i.e. if index 0 has 7 value than the sum of the left integer would be 7, if the index 1 has value of 1 then value would be 8 (7+1) 
                  * step 4: once the values in steps 2 & step 3 equal one another than the indexed value where this happens will be shown
                  */
+
                 return 0;
 
             }
@@ -281,27 +287,30 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
         {
             try
             {
-                // write your code here.
-                /*Code should meet two objectives, the first is if words in 2 separate strings (word 1 & word 2) are equal in length 
-                 * then alternate the characters *starting with word 1.  
-                 * The second objective is if there are any leftover letters (i.e. if word 1 and word 2 are not equal in length 
-                 * then append the letters remaining.*/
+                
+                /*The answer should meet two objectives, the first is if words in 2 separate strings (word 1 & word 2) are equal in length 
+                  then alternate the characters **Starting with word 1.  
 
-                /*First made a list of characters because I want to use list of characters since each word will be looped through
-                *one character at a time, I used a List<char>*/
+                  The second objective is if any remaining characters (i.e. if word 1 and word 2 are not equal in length then append the 
+                  remaining letters at the end of the string.*/
+
+                /*First I made a list of characters because I want to use list of characters since each word will be looped through
+                  one character at a time, I used a List<char>*/
+
                 List<char> ans = new List<char>();
 
                 //Created two variables (since we will have 2 words). Set both variables as integer with starting value as 0.
                 int a = 0;
                 int b = 0;
 
-                /*Use a while loop to iterate through word1 and word 2 and pass each word through the loop.
-                *iterating with the length of the shorter word because if the strings don't match in lenght 
-                *than we can append the remaining characters of the word */
+                /*Used a while loop to iterate through word1 and word 2 and pass each word through the loop.
+                  Iterating with the length of the shorter word because if the strings don't match in length 
+                  we can append the remaining characters of the word */
+
                 while (a < word1.Length || b < word2.Length)
                 {
                     /*Appending both of the characters starting with word 1 and then word 2 while incrementing
-                    *each time so we can get to the next character.*/
+                      each time so we can get to the next character.*/
                     if (a < word1.Length)
                     {
                         ans.Add(word1[a]);
