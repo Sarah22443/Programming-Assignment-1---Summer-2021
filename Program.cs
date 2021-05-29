@@ -203,6 +203,12 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
             try
             {
                 // write your code here
+                /* A formula that would work shown below (wrote it down in steps below);
+                 * step 1: add sum of array of integers store in variable 'nums'
+                 * step 2: obtain the total in 'nums' and subtract the left most integer (starting at index o and then incrementing by +1 in the array) to get total for the left of the index 
+                 * step 3: obtain the value integer in that left most integer (i.e. if index 0 has 7 value than the sum of the left integer would be 7, if the index 1 has value of 1 then value would be 8 (7+1) 
+                 * step 4: once the values in steps 2 & step 3 equal one another than the indexed value where this happens will be shown
+                 */
                 return 0;
 
             }
@@ -237,7 +243,7 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
           /// <param name="nums"></param>
           /// <returns>Number the index in the array</returns>
       */
-        private static int PivotIndex(int[] nums)
+                private static int PivotIndex(int[] nums)
         {
             try
             {
@@ -276,8 +282,42 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
             try
             {
                 // write your code here.
-                return "null";
+                /*Code should meet two objectives, the first is if words in 2 separate strings (word 1 & word 2) are equal in length 
+                 * then alternate the characters *starting with word 1.  
+                 * The second objective is if there are any leftover letters (i.e. if word 1 and word 2 are not equal in length 
+                 * then append the letters remaining.*/
+
+                /*First made a list of characters because I want to use list of characters since each word will be looped through
+                *one character at a time, I used a List<char>*/
+                List<char> ans = new List<char>();
+
+                //Created two variables (since we will have 2 words). Set both variables as integer with starting value as 0.
+                int a = 0;
+                int b = 0;
+
+                /*Use a while loop to iterate through word1 and word 2 and pass each word through the loop.
+                *iterating with the length of the shorter word because if the strings don't match in lenght 
+                *than we can append the remaining characters of the word */
+                while (a < word1.Length || b < word2.Length)
+                {
+                    /*Appending both of the characters starting with word 1 and then word 2 while incrementing
+                    *each time so we can get to the next character.*/
+                    if (a < word1.Length)
+                    {
+                        ans.Add(word1[a]);
+                        a++;
+                    }
+
+                    if (b < word2.Length)
+                    {
+                        ans.Add(word2[b]);
+                        b++;
+                    }
+                    //Join the characters as a string and return the result.
+                    return string.Join(string.Empty, ans);
+                }
             }
+
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
