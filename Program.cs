@@ -122,13 +122,19 @@ namespace Assignment1_Summer2021
                         {
                             y = y -1;
                         }
-                    }
+                  }
 
                 /*If at end of moves both x and y ARE EQUAL to 0 values, than the robot has returned to its origin, so return value is true. 
                  However, if both x and y are NOT EQUAL to 0 at the end of the loop than than return false.*/
-                
-                if (x == 0 && y == 0) return true;
-                return false; 
+
+                if (x == 0 && y == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
@@ -156,19 +162,19 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
             try
             {
                 /*First created a character array (char is equal to 1 character). 
-                  Since a pangram includes all of the english alphabets from a-z included all characters of english alphabet within the array*/
+                  Since a pangram includes all of the English alphabets (a to z), I included all characters of the English alphabet within the array*/
 
                 char[] arr = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
                     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
                 /*Assignd string data type to 'sent' variable. The sent variable is now the input string
-                  Please note that I assigned 's' (as per earlier the string 's' is the input variable). 
-                  Converted string to lower case, since problem requires lower case letters to pass through for the input.*/
+                  Note that 's' (as per earlier the string 's' is the input variable). 
+                  Convert string to lower case, since problem requires lower case letters to pass through for the input.*/
 
                 string sent = s.ToLower();
 
                 /*For loop to check if the pangram contains all the characters in the above array (arr)
-                  The loop will iterate through the array to search input includes all characters in the array*/
+                  The loop will iterate through the array starting at index 0 to search if the input includes all characters in the array*/
 
                 for (int i = 0; i < arr.Length; i++)
                 {
@@ -253,8 +259,36 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
         {
             try
             {
-                // write your code here.
-                return 0;
+                
+                //Create varibale 'len' which will count the number of good pairs in the nums array.
+                {
+                    int len = nums.Length;
+
+                    //Initialize count to 0. This count will count good pairs.
+                    int count = 0;
+
+                    /*use a for loop to loop through the array. There are 2 variables i & j so there will be 2 separate for loops to loop through 
+                      the *array twice. The second for loop is a nested loop that is nested within the first loop.*/
+
+                    for (int i = 0; i < len; i++)
+                    {
+                        //Since the second condition requires i < j, we have j set to equal i.
+                        //While j is less than the legnth, increment j by adding 1. Therefore, the second condition of i < j is met.
+
+                        for (int j = i; j < len; j++)
+                        {
+                            //Check if nums that are indexed in i is equal to nums that are indexed in j AND also i not equal to jj.
+                            //If both conditions are true, increase count by adding 1.
+                            if (nums[i] == nums[j] && i != j)
+                            {
+                                count++;
+                            }
+                        }
+                    }
+
+                    //return the result, the count variable when the loop is done
+                    return count;
+                }
             }
             catch (Exception e)
             {
@@ -263,38 +297,39 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
                 throw;
             }
 
-        }
+                            }
 
-        /*
-            /// <summary>
-    /// You are given two strings word1 and word2. Merge the strings by adding letters /// in alternating order, starting with word1. If a string is longer than the other,
-    /// append the additional letters onto the end of the merged string.
-    /// Example 1
-    /// Input: word1 = "abc", word2 = "pqr"
-    /// Output: "apbqcr"
-    /// Explanation: The merged string will be merged as so:
-    /// word1:  a   b   c
-    /// word2:    p   q   r
-    /// merged: a p b q c r
-    /// </summary>
-           /// <param name="word1"></param>
-    ///<param name="word2"></param>
-           /// <returns>return the merged string </returns>
+                            /*
+                                /// <summary>
+                        /// You are given two strings word1 and word2. Merge the strings by adding letters /// in alternating order, starting with word1. If a string is longer than the other,
+                        /// append the additional letters onto the end of the merged string.
+                        /// Example 1
+                        /// Input: word1 = "abc", word2 = "pqr"
+                        /// Output: "apbqcr"
+                        /// Explanation: The merged string will be merged as so:
+                        /// word1:  a   b   c
+                        /// word2:    p   q   r
+                        /// merged: a p b q c r
+                        /// </summary>
+                               /// <param name="word1"></param>
+                        ///<param name="word2"></param>
+                               /// <returns>return the merged string </returns>
 
-    */
+                        */
 
-        private static string MergeAlternately(string word1, string word2)
+                    private static string 
+            MergeAlternately(string word1, string word2)
         {
             try
             {
                 
                 /*The answer should meet two objectives, the first is if words in 2 separate strings (word 1 & word 2) are equal in length 
-                  then alternate the characters **Starting with word 1.  
+                  then alternate the characters **Starting with word 1**.  
 
                   The second objective is if any remaining characters (i.e. if word 1 and word 2 are not equal in length then append the 
-                  remaining letters at the end of the string.*/
+                  remaining letters at the end of the string.
 
-                /*First I made a list of characters because I want to use list of characters since each word will be looped through
+                  First I made a list of characters because I want to use list of characters since each word will be looped through
                   one character at a time, I used a List<char>*/
 
                 List<char> ans = new List<char>();
@@ -303,14 +338,13 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
                 int a = 0;
                 int b = 0;
 
-                /*Used a while loop to iterate through word1 and word 2 and pass each word through the loop.
-                  Iterating with the length of the shorter word because if the strings don't match in length 
+                /*Used a while loop to iterate through word1 and word2 using a conditional'or' denoted as '||' operator.
+                  Pass each word through the loop, iterating with the length of the shorter word because if the strings don't match in length 
                   we can append the remaining characters of the word */
 
                 while (a < word1.Length || b < word2.Length)
                 {
-                    /*Appending both of the characters starting with word 1 and then word 2 while incrementing
-                      each time so we can get to the next character.*/
+                    //Appending both of the characters starting with word1 and then word2 while incrementing each time so we can get to the next character.
                     if (a < word1.Length)
                     {
                         ans.Add(word1[a]);
@@ -322,6 +356,7 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
                         ans.Add(word2[b]);
                         b++;
                     }
+
                     //Join the characters as a string and return the result.
                     return string.Join(string.Empty, ans);
                 }
@@ -357,8 +392,47 @@ Note: Use of String function (Contains) and hasmap is not allowed, think of othe
         {
             try
             {
-                // write your code here.
-                return "null";
+                //First used HashSet() constructor to convert character array of vowels into a set           
+                ISet<char> vowels = new HashSet<char>() { 'A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u' };
+
+                /*Used a string split method which returns a string array that contains the substrings. 
+                  In this instance that are deliminted by elements of a character array.
+
+                  Note: Split is used to break a delimited string into substrings.You can use either a character array 
+                  or a string array to specify zero or more delimiting characters or strings.If no delimiting characters are specified, 
+                  the string is split at white - space characters.*/
+                
+
+                var builders = string.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEnteries).Select(w => new StringBuilder(w)).ToArray();
+
+                //Set endCount variable as integer value of 1
+                int endCount = 1;
+
+                //Used a builder pattern in a for loop
+                foreach (var builder in builders)
+                {
+                    //Started with first condition if met, if vowel is at index 0 (aka the first letter of sentence), then append 'ma' to end of that word.
+                    if (vowels.Contains(builders[0]))
+                    {
+                        builder.Append("ma");
+                    }
+
+                    //Next if first condition is not met (see above), than remove characters at index 0 & 1 and append it to the end than add 'ma'
+                    else
+                    {
+                        var first = builder[0];
+                        builder.Remove(0, 1);
+                        builder.Append(first);
+                        builder.Append("ma");
+                    }
+
+                    //Finally iterate through each word by adding character 'a' to the end, and increment character by adding one for each word. 
+                    builder.Append('a', endCount + 1);
+
+                }
+
+                //Join the characters to form a complete word in a string data type.
+                return string.Join(" ", builders.Select(builders => builders.ToString().ToArray()));
 
             }
             catch (Exception)
